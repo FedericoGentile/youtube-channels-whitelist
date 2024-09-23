@@ -83,13 +83,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // Function to display Bootstrap alerts
     function showAlert(message, type) {
         const alertContainer = document.createElement('div');
-        alertContainer.className = "alert alert-${type} alert-dismissible fade show";
+        alertContainer.className = `alert alert-${type} alert-dismissible fade show`;
         alertContainer.role = 'alert';
         alertContainer.innerHTML = `
             ${message}
             <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
             </button>
-        ;`
+        `;
 
         // Add the alert to the top of the container
         const container = document.querySelector('.container');

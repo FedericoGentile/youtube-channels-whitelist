@@ -1,5 +1,5 @@
 # YouTube Channels Whitelist
-Whitelist unwanted channels from your YouTube searches.
+Show only whitelisted channels in your YouTube searches.
 <div style="text-align: center;">
   <img src="./img/thumbnail.png" alt="thumbnail" style="width: 50%; height: 50%;" />
 </div>
