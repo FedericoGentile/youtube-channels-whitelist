@@ -1,10 +1,10 @@
-// background.js
-
 chrome.runtime.onInstalled.addListener(() => {
-  // Initialize storage with an empty whitelist if not set
-  chrome.storage.sync.get({ whitelistedChannels: [] }, function(data) {
+  chrome.storage.sync.get({ whitelistedChannels: [], isToggleOn: false }, function(data) {
     if (!data.whitelistedChannels) {
       chrome.storage.sync.set({ whitelistedChannels: [] });
+    }
+    if (data.isToggleOn === undefined) {
+      chrome.storage.sync.set({ isToggleOn: false });
     }
   });
 });
@@ -27,9 +27,13 @@ function removeChannelFromWhitelist(channel) {
 
 // Listen for messages from the popup to add/remove channels
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.action === 'add') {
-    addChannelToWhitelist(request.channel);
-  } else if (request.action === 'remove') {
-    removeChannelFromWhitelist(request.channel);
-  }
+  chrome.storage.sync.get({ isToggleOn: false }, function(data) {
+    if (data.isToggleOn) {
+      if (request.action === 'add') {
+        addChannelToWhitelist(request.channel);
+      } else if (request.action === 'remove') {
+        removeChannelFromWhitelist(request.channel);
+      }
+    }
+  });
 });

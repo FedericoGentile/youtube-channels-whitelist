@@ -5,9 +5,39 @@ document.addEventListener('DOMContentLoaded', function() {
     const addChannelButton = document.getElementById('addChannelButton');
     const whitelist = document.getElementById('whitelist');
     const searchBox = document.getElementById('searchBox');
-    const toggleSwitch = document.getElementById('flexSwitchCheckDefault'); // Get the switch element
-
+   
     let whitelistedChannels = []; // Variable to store channels for search filtering
+
+    // ------------------------------------------------------
+    const toggleSwitch = document.getElementById('flexSwitchCheckDefault'); // Toggle element
+    let isToggleOn = false; // Variable to store the toggle state
+
+    // Function to load channels and toggle state from storage
+    function loadSettings() {
+        chrome.storage.sync.get(['whitelistedChannels', 'isToggleOn'], function(result) {
+            whitelistedChannels = result.whitelistedChannels || [];
+            isToggleOn = result.isToggleOn !== undefined ? result.isToggleOn : false;
+
+            toggleSwitch.checked = isToggleOn; // Set the toggle based on storage value
+            updateWhitelist(); // Initial load without filtering
+        });
+    }
+
+    // Function to save toggle state
+    function saveToggleState(state) {
+        chrome.storage.sync.set({ isToggleOn: state }, function() {
+            // Show feedback to the user
+            const message = state ? 'Whitelist enabled.' : 'Whitelist disabled.';
+            showAlert(message, 'info');
+        });
+    }
+
+    // Event listener for the toggle switch
+    toggleSwitch.addEventListener('change', function() {
+        isToggleOn = toggleSwitch.checked;
+        saveToggleState(isToggleOn);
+    });
+    // ------------------------------------------------------
 
     // Function to update the whitelist display
     function updateWhitelist(searchQuery = '') {
@@ -41,13 +71,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Function to load channels from storage
-    function loadChannels() {
-        chrome.storage.sync.get(['whitelistedChannels'], function(result) {
-            whitelistedChannels = result.whitelistedChannels || [];
-            updateWhitelist(); // Initial load without filtering
-        });
-    }
+    //// Function to load channels from storage
+    //function loadChannels() {
+    //    chrome.storage.sync.get(['whitelistedChannels'], function(result) {
+    //        whitelistedChannels = result.whitelistedChannels || [];
+    //        updateWhitelist(); // Initial load without filtering
+    //    });
+    //}
 
     // Function to add a channel to the whitelist
     function addChannel() {
@@ -116,8 +146,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Event listeners
     addChannelButton.addEventListener('click', addChannel);
 
+    //// Initial load
+    //loadChannels();
+
     // Initial load
-    loadChannels();
+    loadSettings();
 
     // Support Me, Lightning, and Bitcoin options
     const supportMeLink = document.getElementById('supportMeLink');
