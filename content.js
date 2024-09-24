@@ -1,4 +1,5 @@
-function deleteVideosByChannel(whitelistedChannels) {
+function updateVideoVisibility(whitelistedChannels, isToggleOn) {
+  // Select all relevant video elements including ytd-compact-video-renderer
   const videoElements = document.querySelectorAll([
     'ytd-video-renderer.style-scope.ytd-item-section-renderer',
     'ytd-video-renderer.style-scope.ytd-vertical-list-renderer',
@@ -8,8 +9,11 @@ function deleteVideosByChannel(whitelistedChannels) {
   ].join(', '));
 
   videoElements.forEach((videoElement) => {
+    // Find the channel name element within the video renderer
     const channelLink = videoElement.querySelector('ytd-channel-name a');
     const channelText = videoElement.querySelector('ytd-channel-name yt-formatted-string');
+    
+    // Extract the channel name
     let channelName = '';
     if (channelLink) {
       channelName = channelLink.textContent.trim();
@@ -17,16 +21,20 @@ function deleteVideosByChannel(whitelistedChannels) {
       channelName = channelText.textContent.trim();
     }
 
-    // If a channel name is found, check if it's whitelisted
-    if (channelName) {
+    // If toggle is off, show all videos
+    if (!isToggleOn) {
+      videoElement.style.visibility = "visible";
+      videoElement.style.height = "100%";
+    } else if (channelName) {
+      // If toggle is on, filter based on whitelist
       const isWhitelisted = whitelistedChannels.includes(channelName);
-      
+
       if (isWhitelisted || whitelistedChannels.length === 0) {
-        // Show video if channel is whitelisted or the whitelist is empty
+        // Show the video if it's whitelisted or the whitelist is empty
         videoElement.style.visibility = "visible";
         videoElement.style.height = "100%";
       } else {
-        // Hide video if channel is not whitelisted
+        // Hide the video if it's not whitelisted
         videoElement.style.visibility = "hidden";
         videoElement.style.height = "0px";
       }
@@ -34,33 +42,10 @@ function deleteVideosByChannel(whitelistedChannels) {
   });
 }
 
-// Function to restore all videos when the toggle is off
-function showAllVideos() {
-  const videoElements = document.querySelectorAll([
-    'ytd-video-renderer.style-scope.ytd-item-section-renderer',
-    'ytd-video-renderer.style-scope.ytd-vertical-list-renderer',
-    'ytd-compact-video-renderer.style-scope.ytd-item-section-renderer',
-    'ytd-compact-video-renderer.style-scope.ytd-compact-video-renderer', 
-    'ytd-playlist-renderer.style-scope.ytd-item-section-renderer',
-  ].join(', '));
-
-  videoElements.forEach((videoElement) => {
-    // Ensure all videos are visible when the toggle is off
-    videoElement.style.visibility = "visible";
-    videoElement.style.height = "100%";
-  });
-}
-
 // Function to fetch whitelisted channels and apply the filter or show all videos based on toggle state
 function updateVideoList() {
   chrome.storage.sync.get({ whitelistedChannels: [], isToggleOn: false }, function(data) {
-    if (data.isToggleOn) {
-      // If the toggle is on, apply the whitelist filtering
-      deleteVideosByChannel(data.whitelistedChannels);
-    } else {
-      // If the toggle is off, show all videos
-      showAllVideos();
-    }
+    updateVideoVisibility(data.whitelistedChannels, data.isToggleOn);
   });
 }
 
