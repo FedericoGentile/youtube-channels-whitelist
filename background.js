@@ -24,16 +24,3 @@ function removeChannelFromWhitelist(channel) {
     chrome.storage.sync.set({ whitelistedChannels: updatedList });
   });
 }
-
-// Listen for messages from the popup to add/remove channels
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  chrome.storage.sync.get({ isToggleOn: false }, function(data) {
-    if (data.isToggleOn) {
-      if (request.action === 'add') {
-        addChannelToWhitelist(request.channel);
-      } else if (request.action === 'remove') {
-        removeChannelFromWhitelist(request.channel);
-      }
-    }
-  });
-});
