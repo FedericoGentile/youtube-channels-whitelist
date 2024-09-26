@@ -1,0 +1,47 @@
+body {
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  max-height: 800px;
+  overflow-y: auto;
+  height: 550px;
+  width: 375px;
+}
+nav {
+  background-color: red;
+  color: white;
+  ;
+}
+footer {
+    margin-top:20px;
+}
+.form-control {
+  margin-bottom: 10px;
+}
+
+.form-switch {
+  margin-bottom: 10px;
+}
+  
+.btn {
+  margin-top: 10px;
+}
+/* danger button */
+.btn-success {
+    background-color: #00ff00;
+    color: black;
+    border-color: #00ff00;
+    border-radius: #00ff00;
+}
+.btn-success:hover,
+.btn-success:focus,
+.btn-success:active {
+    background-color: #00ff00;
+    color: black;
+    border-color: #00ff00;
+}
+/* Vertically center the container */
+.centered-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
