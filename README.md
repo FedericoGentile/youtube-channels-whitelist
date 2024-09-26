@@ -16,4 +16,7 @@ Download it from:
 2. Write the name of the channel in the popup window and click **Add to Whitelist**:
 <img src="./images/how_to_02.png" alt="how_to_02"/>
 
-3. Click on **Remove** to remove the channel from the whitelist and see the contents again.
+3. Do not forget to active the filter!
+<img src="./images/how_to_03.png" alt="how_to_03"/>
+
+4. Click on **Remove** to remove the channel from the whitelist and see the contents again.
