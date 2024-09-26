@@ -3,9 +3,9 @@
   "name": "YouTube Channel Whitelist",
   "version": "1.0",
   "icons": {
-		"16": "../images/icon_16.png",
-		"48": "../images/icon_48.png",
-		"128": "../images/icon_128.png"
+		"16": "./images/icon_16.png",
+		"48": "./images/icon_48.png",
+		"128": "./images/icon_128.png"
 	},
   "description": "Show only videos from whitelisted YouTube channels.",
   "permissions": [
