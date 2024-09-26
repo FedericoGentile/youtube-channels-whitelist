@@ -3,9 +3,9 @@
   "name": "YouTube Channel Whitelist",
   "version": "1.0",
   "icons": {
-		"16": "./img/icon_16.png",
-		"48": "./img/icon_48.png",
-		"128": "./img/icon_128.png"
+		"16": "../images/icon_16.png",
+		"48": "../images/icon_48.png",
+		"128": "../images/icon_128.png"
 	},
   "description": "Show only videos from whitelisted YouTube channels.",
   "permissions": [
@@ -14,7 +14,7 @@
     "scripting"
   ],
   "action": {
-    "default_popup": "popup.html"
+    "default_popup": "./popup/popup.html"
   },
   "background": {
     "service_worker": "background.js"
@@ -22,7 +22,7 @@
   "content_scripts": [
     {
       "matches": ["*://www.youtube.com/*", "*://www.m.youtube.com/*"],
-      "js": ["content.js"]
+      "js": ["./scripts/content.js"]
     }
   ]
 }
