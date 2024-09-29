@@ -9,9 +9,7 @@
 	},
   "description": "Show only videos from whitelisted YouTube channels.",
   "permissions": [
-    "storage",
-    "activeTab",
-    "scripting"
+    "storage"
   ],
   "action": {
     "default_popup": "./popup/popup.html"
