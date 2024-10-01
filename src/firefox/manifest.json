@@ -5,7 +5,7 @@
     }
 },
     "manifest_version": 2,
-    "name": "YouTube Channel Whitelist",
+    "name": "YouTube Channels Whitelist",
     "version": "1.0",
   
     "description": "Show only videos from whitelisted YouTube channels.",
