@@ -1,0 +1,37 @@
+Effective Date: [26/09/2024]
+
+Introduction
+Thank you for using the YouTube Channel Whitelist Chrome extension. Your privacy is important to us, and we are committed to protecting any personal information that we may collect. This Privacy Policy outlines the data we collect, how we use it, and your rights concerning your data.
+
+By using the YouTube Channel Whitelist extension, you agree to the terms outlined in this Privacy Policy.
+
+Information We Collect
+This extension does not collect any personally identifiable information (PII) from its users. However, the following data is stored locally on your browser and may be synced across devices if you are signed into Chrome:
+
+Whitelisted Channels: The list of YouTube channels you choose to whitelist is stored in Chrome's synced storage. This data is not shared with third parties and is only used to filter content on YouTube based on your preferences.
+Permissions
+To function properly, the YouTube Channel Whitelist extension requires certain permissions:
+
+Storage: We use chrome.storage.sync to store your list of whitelisted YouTube channels. This allows the extension to remember your preferences across sessions and devices (if you are signed into Chrome).
+
+Host Permissions (YouTube): The extension requires access to YouTube domains (https://www.youtube.com/* and https://m.youtube.com/*) to perform its function. It reads page content to identify video channels and filters content based on your whitelist.
+
+Third-Party Data Sharing
+The YouTube Channel Whitelist extension does not share, sell, or distribute any of your personal data or stored preferences with third parties. Your data remains local to your browser and is only used to enhance your browsing experience on YouTube.
+
+Data Retention
+The extension stores your whitelisted channels in Chrome's synced storage. This data is retained as long as the extension is installed. If you uninstall the extension, the data is automatically deleted. You can also manually remove whitelisted channels via the extension’s settings at any time.
+
+Remote Code
+The YouTube Channel Whitelist extension does not execute or rely on any remote code. All code is contained within the extension itself, ensuring no external scripts are fetched during operation.
+
+Security
+We take reasonable measures to protect the information stored locally in your browser from unauthorized access or disclosure. However, no method of electronic storage or internet transmission is 100% secure. While we strive to protect your data, we cannot guarantee its absolute security.
+
+Changes to This Policy
+We may update this Privacy Policy from time to time. Any changes will be posted within the extension and/or via the Chrome Web Store listing. It is your responsibility to review this Privacy Policy periodically for any updates.
+
+Contact Us
+If you have any questions or concerns regarding this Privacy Policy or the YouTube Channel Whitelist extension, please contact us at:
+
+[federicogentile90@protonmail.com]
