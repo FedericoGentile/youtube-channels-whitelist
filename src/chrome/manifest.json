@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "YouTube Channel Whitelist",
+  "name": "YouTube Channels Whitelist",
   "version": "1.0",
   "icons": {
 		"16": "./images/icon_16.png",
